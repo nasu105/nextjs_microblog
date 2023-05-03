@@ -1,10 +1,11 @@
 import { Inter } from 'next/font/google'
-import Layout from '@/components/Layout'
+import Layout, { siteTitle } from '@/components/Layout'
 import styles from '@/styles/Home.module.css'
 
 import utilStyle from '../styles/utils.module.css'
 import Link from 'next/link'
 import { getPostsData } from '@/lib/post'
+import Head from 'next/head'
 
 // SSGの場合 この関数はビルド時に実行される
 export async function getStaticProps() {
@@ -25,7 +26,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({allPostsData}) {
   return (
-    <Layout>
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
       <section className={utilStyle.headingMd}>
         <p>私はフルスタックエンジニアです/好きな言語はJsvascriptです</p>
       </section>
